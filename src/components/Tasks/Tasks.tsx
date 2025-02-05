@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 
 interface Task {
   title: string;
@@ -14,17 +14,27 @@ export const Tasks: React.FC = () => {
   function handleSubmitAddTask(e: FormEvent) {
     e.preventDefault();
 
-    setTasks([
+    const newTask = [
       ...tasks,
       {
         id: new Date().getTime(),
         title: taskTitle,
         done: false,
       },
-    ]);
+    ];
 
+    setTasks(newTask);
+    localStorage.setItem('tasks', JSON.stringify(newTask));
     setTaskTitle("");
   }
+
+  useEffect(() => {
+    const tasksOnLocalStorage = localStorage.getItem('tasks');
+
+    if (tasksOnLocalStorage) {
+      setTasks(JSON.parse(tasksOnLocalStorage));
+    }
+  }, [])
 
   return (
     <section className={styles.container}>
