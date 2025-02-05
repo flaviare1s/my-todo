@@ -8,7 +8,7 @@ export const Header: React.FC = () => {
       <div className={styles.container}>
         <div>
           <h1>MyTodo</h1>
-          <span>Welcome, user!</span>
+          <span>Welcome!</span>
         </div>
         <div>
           <StatsCard title="Total" value={5} />
