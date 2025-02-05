@@ -17,11 +17,13 @@ export const Tasks: React.FC = () => {
     setTasks([
       ...tasks,
       {
-        id: 1,
+        id: new Date().getTime(),
         title: taskTitle,
         done: false,
       },
     ]);
+
+    setTaskTitle("");
   }
 
   return (
@@ -42,7 +44,7 @@ export const Tasks: React.FC = () => {
 
       <ul>
         {tasks.map((task) => (
-          <li>
+          <li key={task.id}>
             <input type="checkbox" name="task" id={`${task.id}`} />
             <label htmlFor={`${task.id}`}>{task.title}</label>
           </li>
