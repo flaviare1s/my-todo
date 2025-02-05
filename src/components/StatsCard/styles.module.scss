@@ -1,9 +1,11 @@
 .stats_card {
-  background-color: lightblue;
+  background-color: #314da6;
   width: 100%;
   padding: 1rem;
   text-align: center;
   border-radius: 5px;
+  flex: 1 1 30%;
+  min-width: 50px;
 
   h2 {
     font-size: 1rem;
@@ -14,5 +16,16 @@
   span {
     font-size: 4rem;
     line-height: 1;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .stats_card {
+    h2 {
+      font-size: 0.75rem;
+    }
+    span {
+      font-size: 2rem;
+    }
   }
 }

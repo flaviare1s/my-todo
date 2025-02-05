@@ -1,6 +1,6 @@
-import { StatsCard } from "../StatsCard/StatsCard"
-import styles  from "./styles.module.scss"
-import React from "react"
+import { StatsCard } from "../StatsCard/StatsCard";
+import styles from "./styles.module.scss";
+import React from "react";
 
 export const Header: React.FC = () => {
   return (
@@ -11,11 +11,11 @@ export const Header: React.FC = () => {
           <span>Welcome, user!</span>
         </div>
         <div>
-          <StatsCard title="Total Tasks" value={5} />
-          <StatsCard title="Pending Tasks" value={2} />
-          <StatsCard title="Completed Tasks" value={3} />
+          <StatsCard title="Total" value={5} />
+          <StatsCard title="Pending" value={2} />
+          <StatsCard title="Completed" value={3} />
         </div>
       </div>
     </header>
   );
-}
+};

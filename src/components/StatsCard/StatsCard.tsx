@@ -1,9 +1,9 @@
-import styles from './styles.module.scss'
-import React from 'react'
+import styles from "./styles.module.scss";
+import React from "react";
 
 interface StatsCardProps {
-  title: string
-  value: number
+  title: string;
+  value: number;
 }
 
 export const StatsCard: React.FC<StatsCardProps> = ({ title, value }) => {
@@ -12,5 +12,5 @@ export const StatsCard: React.FC<StatsCardProps> = ({ title, value }) => {
       <h2>{title}</h2>
       <span>{value}</span>
     </article>
-  )
-}
+  );
+};
