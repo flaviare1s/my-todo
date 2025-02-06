@@ -55,8 +55,11 @@ export const Tasks: React.FC = () => {
       <ul>
         {tasks.map((task) => (
           <li key={task.id}>
-            <input type="checkbox" name="task" id={`${task.id}`} />
-            <label htmlFor={`${task.id}`}>{task.title}</label>
+            <div>
+              <input type="checkbox" name="task" id={`${task.id}`} />
+              <label htmlFor={`${task.id}`}>{task.title}</label>
+            </div>
+            <button onClick={() => setTasks(tasks.filter((t) => t.id !== task.id))}>X</button>
           </li>
         ))}
       </ul>
