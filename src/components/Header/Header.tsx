@@ -2,7 +2,21 @@ import { StatsCard } from "../StatsCard/StatsCard";
 import styles from "./styles.module.scss";
 import React from "react";
 
-export const Header: React.FC = () => {
+interface Task {
+  title: string;
+  done: boolean;
+  id: number;
+}
+
+interface HeaderProps {
+  tasks: Task[];
+}
+
+export const Header: React.FC<HeaderProps> = ({ tasks }) => {
+  const totalTasks = tasks.length;
+  const completedTasks = tasks.filter((task) => task.done).length;
+  const pendingTasks = totalTasks - completedTasks;
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -11,9 +25,9 @@ export const Header: React.FC = () => {
           <span>Welcome!</span>
         </div>
         <div>
-          <StatsCard title="Total" value={5} />
-          <StatsCard title="Pending" value={2} />
-          <StatsCard title="Completed" value={3} />
+          <StatsCard title="Total" value={totalTasks} />
+          <StatsCard title="Pending" value={pendingTasks} />
+          <StatsCard title="Completed" value={completedTasks} />
         </div>
       </div>
     </header>

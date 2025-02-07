@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { FormEvent, useState } from "react";
 
 interface Task {
   title: string;
@@ -7,34 +7,40 @@ interface Task {
   id: number;
 }
 
-export const Tasks: React.FC = () => {
+interface TasksProps {
+  tasks: Task[];
+  setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+}
+
+export const Tasks: React.FC<TasksProps> = ({ tasks, setTasks }) => {
   const [taskTitle, setTaskTitle] = useState("");
-  const [tasks, setTasks] = useState([] as Task[]);
 
   function handleSubmitAddTask(e: FormEvent) {
     e.preventDefault();
+    if (!taskTitle.trim()) return;
 
     const newTask = [
       ...tasks,
-      {
-        id: new Date().getTime(),
-        title: taskTitle,
-        done: false,
-      },
+      { id: Date.now(), title: taskTitle, done: false },
     ];
-
     setTasks(newTask);
-    localStorage.setItem('tasks', JSON.stringify(newTask));
+    localStorage.setItem("tasks", JSON.stringify(newTask));
     setTaskTitle("");
   }
 
-  useEffect(() => {
-    const tasksOnLocalStorage = localStorage.getItem('tasks');
+  function toggleTaskDone(id: number) {
+    const updatedTasks = tasks.map((task) =>
+      task.id === id ? { ...task, done: !task.done } : task
+    );
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+  }
 
-    if (tasksOnLocalStorage) {
-      setTasks(JSON.parse(tasksOnLocalStorage));
-    }
-  }, [])
+  function deleteTask(id: number) {
+    const filteredTasks = tasks.filter((task) => task.id !== id);
+    setTasks(filteredTasks);
+    localStorage.setItem("tasks", JSON.stringify(filteredTasks));
+  }
 
   return (
     <section className={styles.container}>
@@ -56,10 +62,14 @@ export const Tasks: React.FC = () => {
         {tasks.map((task) => (
           <li key={task.id}>
             <div>
-              <input type="checkbox" name="task" id={`${task.id}`} />
-              <label htmlFor={`${task.id}`}>{task.title}</label>
+              <input
+                type="checkbox"
+                checked={task.done}
+                onChange={() => toggleTaskDone(task.id)}
+              />
+              <label>{task.title}</label>
             </div>
-            <button onClick={() => setTasks(tasks.filter((t) => t.id !== task.id))}>X</button>
+            <button onClick={() => deleteTask(task.id)}>X</button>
           </li>
         ))}
       </ul>
