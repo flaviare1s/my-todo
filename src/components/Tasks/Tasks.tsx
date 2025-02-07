@@ -64,10 +64,16 @@ export const Tasks: React.FC<TasksProps> = ({ tasks, setTasks }) => {
             <div>
               <input
                 type="checkbox"
+                id={`${task.id}`}
                 checked={task.done}
                 onChange={() => toggleTaskDone(task.id)}
               />
-              <label>{task.title}</label>
+              <label
+                htmlFor={`${task.id}`}
+                style={{ textDecoration: task.done ? "line-through" : "none" }}
+              >
+                {task.title}
+              </label>
             </div>
             <button onClick={() => deleteTask(task.id)}>X</button>
           </li>
