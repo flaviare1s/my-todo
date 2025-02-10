@@ -1,33 +1,30 @@
+import { TasksContext } from "../../context/TasksContext";
 import { StatsCard } from "../StatsCard/StatsCard";
 import styles from "./styles.module.scss";
-import React from "react";
+import React, { useContext } from "react";
 
-interface Task {
-  title: string;
-  done: boolean;
-  id: number;
-}
+export const Header: React.FC = () => {
+  const { tasks } = useContext(TasksContext);
 
-interface HeaderProps {
-  tasks: Task[];
-}
-
-export const Header: React.FC<HeaderProps> = ({ tasks }) => {
   const totalTasks = tasks.length;
-  const completedTasks = tasks.filter((task) => task.done).length;
-  const pendingTasks = totalTasks - completedTasks;
+
+  const totalPending = tasks.reduce((total, task) => {
+    if(!task.done) return total + 1;
+    return total
+  }, 0)
+
+  const totalCompleted = totalTasks - totalPending
 
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <div>
-          <h1>MyTodo</h1>
           <span>Welcome!</span>
         </div>
         <div>
           <StatsCard title="Total" value={totalTasks} />
-          <StatsCard title="Pending" value={pendingTasks} />
-          <StatsCard title="Completed" value={completedTasks} />
+          <StatsCard title="Pending" value={totalPending} />
+          <StatsCard title="Completed" value={totalCompleted} />
         </div>
       </div>
     </header>
