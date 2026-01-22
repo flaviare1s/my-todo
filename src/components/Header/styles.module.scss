@@ -2,7 +2,11 @@
   background-color: var(--primary-600);
   color: var(--surface);
   padding-top: 20px;
-  font-size: 1.5rem;
+ 
+  h1 {
+    font-size: 1.8rem;
+    text-decoration: underline;
+  }
 
   .container {
     max-width: 1240px;
@@ -11,8 +15,9 @@
 
     div:first-child {
       display: flex;
-      justify-content: space-between;
+      justify-content: start;
       align-items: center;
+      gap: 5px;
     }
 
     div:last-child {

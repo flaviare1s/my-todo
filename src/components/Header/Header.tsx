@@ -1,3 +1,4 @@
+import { ListChecks } from "lucide-react";
 import { TasksContext } from "../../context/TasksContext";
 import { StatsCard } from "../StatsCard/StatsCard";
 import styles from "./styles.module.scss";
@@ -19,7 +20,8 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <div>
-          <span>Welcome!</span>
+          <ListChecks />
+          <h1>My Todo</h1>
         </div>
         <div>
           <StatsCard title="Total" value={totalTasks} />
