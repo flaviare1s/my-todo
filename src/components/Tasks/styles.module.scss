@@ -60,7 +60,7 @@
         input {
             height: 1rem;
             width: 1rem;
-            accent-color: var(--accent);
+            accent-color: var(--primary);
           }
         
           label {
@@ -72,14 +72,18 @@
       button {
         width: 30px;
         height: 30px;
-        border-radius: 5px;
+        border: none;
         background-color: transparent;
         color: var(--accent);
         font-weight: bold;
         text-transform: uppercase;
         cursor: pointer;
         min-width: 30px;
-      }    
+      }
+      
+      button:hover {
+        color: var(--danger);
+      }
     }
   }
 }

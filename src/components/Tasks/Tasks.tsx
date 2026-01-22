@@ -1,3 +1,4 @@
+import { Trash2 } from "lucide-react";
 import { TasksContext } from "../../context/TasksContext";
 import styles from "./styles.module.scss";
 import React, { FormEvent, useContext, useState } from "react";
@@ -63,12 +64,17 @@ export const Tasks: React.FC = () => {
                 name="task"
                 id={`${task.id}`}
               />
-              <label className={task.done ? styles.done : ""} htmlFor={`${task.id}`} >{task.title}</label>
+              <label
+                className={task.done ? styles.done : ""}
+                htmlFor={`${task.id}`}
+              >
+                {task.title}
+              </label>
             </div>
             <button
               onClick={() => setTasks(tasks.filter((t) => t.id !== task.id))}
             >
-              X
+              <Trash2 />
             </button>
           </li>
         ))}
