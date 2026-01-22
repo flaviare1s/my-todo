@@ -1,50 +1,63 @@
-# React + TypeScript + Vite
+# My Todo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação de exemplo em React + Vite + TypeScript para gerenciar tarefas (to-do).
 
-Currently, two official plugins are available:
+## Visão geral
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Pequeno projeto que demonstra um gerenciador de tarefas com componentes reutilizáveis, contexto para estado global e exemplos de conceitos React (memoização e refs).
 
-## Expanding the ESLint configuration
+## Principais funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Adicionar, listar e remover tarefas
+- Estado global via Context (`TasksContext`)
+- Cards de estatísticas
+- Componentes demonstrativos de `memoization` e `refs`
 
-- Configure the top-level `parserOptions` property like this:
+## Tecnologias
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- TypeScript
+- React
+- Vite
+- SCSS módulos (styles.module.scss)
+
+## Pré-requisitos
+
+- Node.js 16+ (recomendado)
+- npm
+
+## Instalação
+
+Clone o repositório e instale dependências:
+
+```bash
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Executando em desenvolvimento
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm run dev
 ```
+
+Abra http://localhost:5173 (ou porta indicada pelo Vite).
+
+## Deploy
+
+Aplicação disponível em: https://my-todo-ten-pi.vercel.app/
+
+## Estrutura do projeto (principais arquivos)
+
+- [src/App.tsx](src/App.tsx) — Componente raiz da aplicação
+- [src/main.tsx](src/main.tsx) — Ponto de entrada do Vite/React
+- [src/context/TasksContext.tsx](src/context/TasksContext.tsx) — Contexto e provedor das tarefas
+- [src/components/Tasks/Tasks.tsx](src/components/Tasks/Tasks.tsx) — Lista e lógica de tarefas
+- [src/components/Header/Header.tsx](src/components/Header/Header.tsx) — Cabeçalho da aplicação
+- [src/components/StatsCard/StatsCard.tsx](src/components/StatsCard/StatsCard.tsx) — Cartões de estatísticas
+- [src/components/Concepts/Memoization.tsx](src/components/Concepts/Memoization.tsx) — Exemplo de memoização
+- [src/components/Concepts/Refs.tsx](src/components/Concepts/Refs.tsx) — Exemplo de uso de refs
+- [vite.config.ts](vite.config.ts) — Configuração do Vite
+- [package.json](package.json) — Scripts e dependências
+
+---
+
+Desenvolvido durante os cursos da Ada (Frontend em React e Elas + Tech)
