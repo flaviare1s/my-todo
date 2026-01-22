@@ -4,7 +4,55 @@
   box-sizing: border-box;
 }
 
-body, button, input, textarea, select, option {
-  font-family: 'Cairo', sans-serif;
-  background-color: #6E5C62;
+body,
+button,
+input,
+textarea,
+select,
+option {
+  font-family: "Cairo", sans-serif;
+  background-color: var(--bg);
+}
+
+/* Paleta: Soft Pastels (variáveis) */
+:root {
+  --bg: #f6f8ff;
+  --surface: #ffffff;
+  --text: #0f1724;
+  --muted: #94a3b8;
+  --primary: #6c8bf5;
+  --primary-600: #5570f0;
+  --accent: #ff6b6b;
+  --success: #34d399;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+}
+
+/* dark theme override */
+[data-theme="dark"] {
+  --bg: #0b1220;
+  --surface: rgba(255, 255, 255, 0.04);
+  --text: #e6eef8;
+  --muted: #94a3b8;
+  --primary: #4f46e5;
+  --primary-600: #3730a3;
+  --accent: #06b6d4;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #fb7185;
+}
+
+/* utilitários rápidos */
+.body {
+  background: var(--bg);
+  color: var(--text);
+}
+.btn-primary {
+  background: linear-gradient(180deg, var(--primary), var(--primary-600));
+  color: var(--surface);
+}
+.card {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 6px 18px rgba(10, 20, 40, 0.06);
 }
