@@ -1,4 +1,4 @@
-# My Todo
+# 📄 MyTodo
 
 Aplicação de exemplo em React + Vite + TypeScript para gerenciar tarefas (to-do).
 
@@ -60,4 +60,4 @@ Aplicação disponível em: https://my-todo-ten-pi.vercel.app/
 
 ---
 
-Desenvolvido durante os cursos da Ada (Frontend em React e Elas + Tech)
+Desenvolvido durante os cursos da Ada (Frontend em React e Elas+ Tech)
