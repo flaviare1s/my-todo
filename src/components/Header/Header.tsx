@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
       <div className={styles.container}>
         <div>
           <ListChecks />
-          <h1>My Todo</h1>
+          <h1>MyTodo</h1>
         </div>
         <div>
           <StatsCard title="Total" value={totalTasks} />
